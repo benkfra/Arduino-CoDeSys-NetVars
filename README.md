@@ -4,7 +4,14 @@ Arduino implementation to send and receive CoDeSys Network Variables (NetVars)
 ## Example
 
 ```
-CoDeSysNetvars netvars("225.10.10.10", 1202, CoDeSysNetvars::TT_ONCHANGE);
+#include <ESP8266WiFi.h>
+
+#define CODESYS_IP      "225.10.10.11"
+#define CODESYS_PORT    1202
+#define CODESYS_COBID   4
+
+WiFiUDP udp;
+CoDeSysNetvars netvars(&udp, CODESYS_IP, CODESYS_PORT, CODESYS_COBID, CoDeSysNetvars::TT_ONCHANGE);
 
 setup:
 netvars.clear();
